@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dpgrpfdwd85i1"]
+
+[ext_resource type="Shader" uid="uid://ckgs61tbyoilk" path="res://Chapter2/Materials/Shaders/gasket_2D.tres" id="1"]
+
+[resource]
+shader = ExtResource( "1" )

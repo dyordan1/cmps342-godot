@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://y3sfhshq4kj"]
+
+[sub_resource type="Shader" id="Shader_tejrc"]
+code = "shader_type canvas_item;
+
+void fragment() {
+	COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awm2e"]
+shader = SubResource( "Shader_tejrc" )
+
+[sub_resource type="GDScript" id="GDScript_lhmf1"]
+script/source = "extends MeshInstance2D
+
+# Constants
+var NUM_POINTS = 10000
+
+# Global variables
+var window
+var gasket_size
+
+
+func toScreenCoordinate(vec3):
+	\"\"\" Convert a vec3 with values [-1;1] to screen space. \"\"\"
+
+	return Vector3(
+		vec3[0] * (gasket_size / 2) + window.size[0] / 2,
+		vec3[1] * (gasket_size / 2) + window.size[1] / 2,
+		0) # Z is ignored in 2D
+
+
+func _ready():
+	\"\"\" Called when the Node is dispatched. \"\"\"
+
+	# Collect window data once - used in toScreenCoordinates.
+	window = get_viewport()
+	gasket_size = min(window.size[0], window.size[1]) * 0.9 # small \"padding\"
+
+	# Initialize the tips of the gasket.
+	var verts = [
+		Vector3(-1, -1, 0),
+		Vector3(0,  1, 0),
+		Vector3(1, -1, 0)]
+
+	# Seed the gasket with the first point - midpoint of the line connecting
+	# the midpoints of two sides.
+	var u = 0.5 * (verts[0] + verts[1])
+	var v = 0.5 * (verts[0] + verts[2])
+	var p = 0.5 * (u + v)
+	var points = [ p ]
+
+	# Generate NUM_POINTS random points
+	var rng = RandomNumberGenerator.new()
+	for i in range(0, NUM_POINTS):
+		var j = rng.randi_range(0, 2)
+		p = 0.5 * (points[i] + verts[j])
+		points.append(p)
+
+	# Initialize a Surface Tool in POINTS mode
+	var st = SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_POINTS)
+
+	# Add all points to the tool buffer
+	for vert in points:
+		st.add_vertex(toScreenCoordinate(vert))
+
+	# Ship the vertex buffer to a new ArrayMesh instance
+	var mesh = ArrayMesh.new()
+	st.commit(mesh)
+
+	# Set the node's mesh property. This only works if the node this script is
+	# attached to is a MeshInstance3D or MeshInstance2D.
+	self.mesh = mesh
+"
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gasket" type="MeshInstance2D" parent="."]
+material = SubResource( "ShaderMaterial_awm2e" )
+script = SubResource( "GDScript_lhmf1" )
+
+[node name="Scene Name" type="Label" parent="."]
+offset_left = 10.0
+theme_override_font_sizes/font_size = 16
+text = "gasket1
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scene Description" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+theme_override_font_sizes/font_size = 16
+text = "This example uses built-in shader and script. The scene is self-contained"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

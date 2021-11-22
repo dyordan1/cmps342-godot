@@ -1,0 +1,13 @@
+[gd_resource type="Shader" format=3 uid="uid://dofvtqobavs2l"]
+
+[resource]
+code = "shader_type spatial;
+
+void vertex() {
+	COLOR = COLOR;
+}
+
+void fragment() {
+	ALBEDO = vec3(COLOR.x, COLOR.y, COLOR.z);
+	ALPHA = 1.0;
+}"

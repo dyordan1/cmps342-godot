@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b3d7g0vhn3id0"]
+
+[ext_resource type="Shader" uid="uid://dofvtqobavs2l" path="res://Chapter2/Materials/Shaders/gasket_3D_color.tres" id="1_kty6r"]
+
+[resource]
+render_priority = 0
+shader = ExtResource( "1_kty6r" )

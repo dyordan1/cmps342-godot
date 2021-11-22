@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://6pbtdt3gfosk"]
+
+[ext_resource type="Material" uid="uid://dpgrpfdwd85i1" path="res://Chapter2/Materials/gasket_2D.tres" id="1_pbpra"]
+[ext_resource type="Script" path="res://Chapter2/Scripts/gasket_2D_triangles.gd" id="2_vjl3i"]
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gasket" type="MeshInstance2D" parent="."]
+material = ExtResource( "1_pbpra" )
+script = ExtResource( "2_vjl3i" )
+
+[node name="Scene Name" type="Label" parent="."]
+offset_left = 10.0
+offset_right = 69.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 16
+text = "gasket3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scene Description" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+theme_override_font_sizes/font_size = 16
+text = "This example uses external material/shader (gasket_2D) and script (gasket_2D_triangles)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

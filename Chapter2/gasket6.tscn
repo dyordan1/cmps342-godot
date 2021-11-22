@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu6si1ghu753m"]
+
+[ext_resource type="Material" uid="uid://b3d7g0vhn3id0" path="res://Chapter2/Materials/gasket_3D_color2.tres" id="1_bkp2x"]
+[ext_resource type="Script" path="res://Chapter2/Scripts/gasket_3D_tetrahedrons_colored.gd" id="2_2puk3"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Gasket" type="MeshInstance3D" parent="."]
+material_override = ExtResource( "1_bkp2x" )
+script = ExtResource( "2_2puk3" )
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.16921)
+projection = 1
+size = 2.0
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scene Name" type="Label" parent="UI"]
+offset_left = 10.0
+offset_right = 69.0
+offset_bottom = 26.0
+theme_override_font_sizes/font_size = 16
+text = "gasket6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scene Description" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+theme_override_font_sizes/font_size = 16
+text = "This example uses external material/shader (gasket_3D_color) and script (gasket_3D_tetrahedrons_colored)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

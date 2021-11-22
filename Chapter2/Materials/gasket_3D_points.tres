@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c6k33nt4lusts"]
+
+[ext_resource type="Shader" uid="uid://dlc2sbkf31yjq" path="res://Chapter2/Materials/Shaders/gasket_3D_points.tres" id="1_fymga"]
+
+[resource]
+render_priority = 0
+shader = ExtResource( "1_fymga" )

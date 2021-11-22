@@ -1,0 +1,12 @@
+[gd_resource type="Shader" format=3 uid="uid://dlc2sbkf31yjq"]
+
+[resource]
+code = "shader_type spatial;
+
+void vertex() {
+	POINT_SIZE = 5.0;
+}
+
+void fragment() {
+	ALBEDO = vec3(1.0, 0.0, 0.0);
+}"
