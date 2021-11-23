@@ -1,10 +1,7 @@
-res://Chapter2/Materials/gasket_3D_color2.tres
-res://Chapter2/Materials/gasket_3D_points.tres
-res://Chapter2/Scripts/gasket_3D_tetrahedrons_colored.gd
-res://Chapter2/gasket1.tscn
 res://Chapter2/gasket2.tscn
-res://Chapter2/gasket3.tscn
-res://Chapter2/gasket4.tscn
-res://Chapter2/gasket5.tscn
-res://Chapter2/gasket6.tscn
-res://Chapter2/gasket_editor.tscn
+res://Chapter3/Materials/Shaders/simple_red.tres
+res://Chapter3/Materials/simple_red.tres
+res://Chapter3/Scripts/square_rotating.gd
+res://Chapter3/Scripts/square_static.gd
+res://Chapter3/square1.tscn
+res://Chapter3/square2.tscn

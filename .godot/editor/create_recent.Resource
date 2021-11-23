@@ -1,1 +1,4 @@
 ShaderMaterial
+Shader
+CanvasItemMaterial
+StandardMaterial3D
